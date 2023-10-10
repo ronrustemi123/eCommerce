@@ -1,0 +1,28 @@
+.footer-links {
+    color: white;
+    text-transform: capitalize;
+    font-size: 17px;
+    font-family: 'Open Sans';
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.footer-menu {
+    display: flex;
+    gap: 25px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footer-menu + h2 {
+    color: white;
+    text-transform: capitalize;
+    font-size: 15px;
+    font-family: 'Open Sans';
+}
+
+

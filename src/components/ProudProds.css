@@ -1,0 +1,22 @@
+.proud-prods {
+    width: min(1200px, 90%);
+    margin: 20px auto;
+    height: auto;
+}
+
+.proud-prods-heading {
+    font-size: 28px;
+    font-weight: 600;
+    font-family: "Raleway";
+    margin-bottom: 40px;
+    margin-top: 60px;
+}
+
+@media (max-width: 1024px) {
+    .proud-prods {
+        height: auto;
+    }
+    .proud-prods-heading {
+        margin-top: 400px;
+    }
+}

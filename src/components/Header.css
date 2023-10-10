@@ -1,0 +1,44 @@
+.header {
+    width: min(1200px, 90%);
+    margin: 20px auto;
+    height: 500px;
+}
+
+.header img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    position: relative;
+    filter: brightness(0.7);
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(0.6);
+    }
+}
+
+
+.header-img-text {
+    position: absolute;
+    bottom: 28px;
+    left: 25px;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: 'Open Sans';
+    color: white;
+    user-select: none;
+    cursor: pointer;
+}
+
+@media (max-width: 1024px) {
+    .header-img-text {
+        font-size: 24px;
+        left: 15px;
+        bottom: 18px;
+        font-weight: 600;
+    }
+    .header {
+        height: 300px;
+    }
+}
