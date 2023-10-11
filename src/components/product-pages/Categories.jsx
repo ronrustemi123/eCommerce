@@ -32,7 +32,7 @@ const Categories = () => {
                     return(
                         <Grid2 key={el.description} xs={1}>
                             <Link onClick={() => window.scrollTo(0, 0)}  style={{textDecoration: 'none', color: 'black'}}  to={`/product/${el.id}`}>
-                                <ProductItem img={el.img} price={el.price} name={el.description}/>
+                                <ProductItem imgWidth='215px' customHeight="300px" img={el.img} price={el.price} name={el.description}/>
                             </Link>
                         </Grid2>
                     )
@@ -40,7 +40,7 @@ const Categories = () => {
                         return(
                             <Grid2 key={el.description} xs={1}>
                                 <Link onClick={() => window.scrollTo(0, 0)}  style={{textDecoration: 'none', color: 'black'}}  to={`/product/${el.id}`}>
-                                    <ProductItem img={el.img} price={el.price} name={el.description}/>
+                                    <ProductItem imgWidth='215px' customHeight="300px"  img={el.img} price={el.price} name={el.description}/>
                                 </Link>
                             </Grid2>
                         )

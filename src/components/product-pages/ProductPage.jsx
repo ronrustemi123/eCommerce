@@ -3,9 +3,13 @@ import './ProductPage.css'
 import {items} from '../AllData'
 import Trending from '../Trending'
 import { Button, ButtonGroup } from '@mui/material';
-import { useState } from 'react';
+import { useState, useContext, useEffect } from 'react';
+
+import { CartContext } from '../../Context/CartContext';
 
 const ProductPage = () => {
+
+    const {price, setPrice, quantity, setQuantity, setCartItems, cartItems} = useContext(CartContext)
 
     const {itemId} = useParams()
 
@@ -17,6 +21,23 @@ const ProductPage = () => {
     const changeImage = (e) => {
         setMainImg(e.target.src)
     }
+
+    const handleCartItems = () => {
+        const newItems = {
+            img: item.img,
+            price,
+            quantity,
+            title: item.description
+        }
+
+        setCartItems([...cartItems, newItems])
+
+    }
+
+
+    useEffect(() => {
+        setPrice(() => item.price * quantity)
+    }, [quantity])
 
     return (
         <main className='product-page'>
@@ -37,21 +58,21 @@ const ProductPage = () => {
                         <h2>Quantity</h2>
                         <div >
                             <ButtonGroup size='large' color='inherit'>
-                                <Button sx={{backgroundColor: "white"}}>
+                                <Button onClick={() => quantity > 1 ? setQuantity(prev => prev - 1) : null} sx={{backgroundColor: "white"}}>
                                     <i className="fa-solid fa-arrow-left"></i>
                                 </Button>
                                 <Button disabled color='secondary'>
-                                    0
+                                    {quantity}
                                 </Button>
-                                <Button sx={{backgroundColor: "white"}}>
+                                <Button onClick={() => quantity < 10 ? setQuantity(prev => prev + 1) : null} sx={{backgroundColor: "white"}}>
                                     <i className="fa-solid fa-arrow-right"></i>
                                 </Button>
                             </ButtonGroup>
                         </div>
-                        <h2>$123</h2>
+                        <h2>${price}</h2>
                     </div>
                     <div >
-                        <button className='add-to-cart-btn'>ADD TO CART</button>
+                        <button onClick={handleCartItems} className='add-to-cart-btn'>ADD TO CART</button>
                         <button className='buy-now-btn'>BUY NOW</button>
                     </div>
                 </div>
