@@ -33,10 +33,11 @@ const ProductPage = () => {
         const checkItems = cartItems.some(el => el.title === newItems.title)
         if(!checkItems) {
             setCartItems([...cartItems, newItems])
+            setQuantity(1)
         }else {
             console.log('already in cart')
         }
-        console.log('2 tiems')
+        
     }
 
 

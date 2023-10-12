@@ -23,12 +23,14 @@ const CartItem = ({price, img, title, quantity}) => {
         <div className="cart-item">
             <img width={120} height={120} src={img} alt="" />
             <div>
-                <div>
+                <div className='cart-item-flexier'>
                     <h2>{title}</h2>
                     <p>Amount: {quantity}</p>
                 </div>
-                <p>${price}</p>
-                <h1 onClick={removeProduct}>x</h1>
+                <div className='cart-item-flex'>
+                    <p>${price}</p>
+                    <i onClick={removeProduct} className="fa-solid fa-xmark"></i>
+                </div>
             </div>
         </div>
     );

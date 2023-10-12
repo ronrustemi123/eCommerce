@@ -37,20 +37,46 @@
 }
 
 .total-price {
-    margin: 24px 24px 0;
     font-size: 24px;
     font-weight: 700;
     color: black;
     font-family: 'Open Sans';
-    display: flex;
-    align-items: center;
-    height: 70px;
-    border-top: 3px dashed black;
 }
 
 .cart-heading i {
     font-size: 22px;
     cursor: pointer;
+}
+
+.cart-img-div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.cart-img-div p {
+    font-size: 16px;
+    font-weight: 700;
+    font-family: 'Open Sans';
+    margin-top: 10px;
+}
+
+.checkout-btn {
+    padding: 6px 28px;
+    cursor: pointer;
+    background-color: transparent;
+    border: 2px solid black;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Open Sans';
+    transition: all 0.15s ease;
+
+    &:hover {
+        background-color: black;
+        color: white;
+    }
 }
 
 .nav-menu p {
