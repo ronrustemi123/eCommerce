@@ -5,6 +5,9 @@ import Trending from '../Trending'
 import { Button, ButtonGroup } from '@mui/material';
 import { useState, useContext, useEffect } from 'react';
 
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 import { CartContext } from '../../Context/CartContext';
 
 const ProductPage = () => {
@@ -34,12 +37,16 @@ const ProductPage = () => {
         if(!checkItems) {
             setCartItems([...cartItems, newItems])
             setQuantity(1)
+            toast.success('Product added to cart!')
         }else {
-            console.log('already in cart')
+            toast.error('Product already in cart!')
         }
         
     }
 
+    useEffect(() => {
+        setMainImg(item.img)
+    }, [item.specs])
 
     useEffect(() => {
         setPrice(() => item.price * quantity)

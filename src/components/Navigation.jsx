@@ -2,13 +2,15 @@ import './Navigation.css'
 import { useState, useContext, useEffect } from 'react';
 
 import logo from '../img/newlogo2.png'
-import { Stack, SwipeableDrawer } from '@mui/material';
+import { Badge, Stack, SwipeableDrawer } from '@mui/material';
 import { Link } from 'react-router-dom';
 
 import { CategoryContext } from '../Context/CategoryContext';
 import { CartContext } from '../Context/CartContext';
 import CartItem from './CartItem';
 import cartImg from '../img/cart/empty-cart.png'
+
+import { ToastContainer } from 'react-toastify';
 
 
 const Navigation = () => {
@@ -41,6 +43,18 @@ const Navigation = () => {
     return (
         <>
             <nav className='nav-bar'>
+                <ToastContainer
+                    position="top-center"
+                    autoClose={2500}
+                    hideProgressBar
+                    newestOnTop={false}
+                    closeOnClick
+                    rtl={false}
+                    pauseOnFocusLoss={false}
+                    draggable
+                    pauseOnHover={false}
+                    theme="dark"
+                />
                 <div className="nav-contents">
                     <Link to={'/'}>
                         <img width={86} src={logo} alt="logo" />
@@ -52,7 +66,9 @@ const Navigation = () => {
                         <Link onClick={() => window.scrollTo(0, 0)} to={`/product/${randomProduct}`} style={{textDecoration: 'none', color: 'black'}}>
                             <p className='hide-mobile'>product page</p>
                         </Link>
-                        <i onClick={toggleCartOpen} className="fa-solid fa-cart-shopping"></i>   
+                        <Badge badgeContent={cartItems.length} variant='dot' color='error' max={9} overlap='rectangular'>
+                            <i onClick={toggleCartOpen} className="fa-solid fa-cart-shopping"></i> 
+                        </Badge>  
                         <i onClick={toggleOpen} className="fa-solid fa-bars burger"></i>
                     </div>
                 </div>
@@ -60,8 +76,12 @@ const Navigation = () => {
             <SwipeableDrawer onOpen={toggleOpen} onClose={toggleOpen} open={open} anchor='right'>
                 <Stack position='relative' sx={{width: "100vw", alignItems: 'center', justifyContent: 'center', height: '100%'}} spacing={4} >
                     <i onClick={toggleOpen} className="fa-solid fa-xmark close"></i>
-                    <p className='drawer-text'>categories</p>
-                    <p className='drawer-text'>product page</p>
+                    <Link onClick={() => {window.scrollTo(0, 0), setCategory('all'), toggleOpen()}} to={'/categories'} style={{textDecoration: 'none', color: 'black'}}>
+                        <p className='drawer-text'>categories</p>
+                    </Link>
+                    <Link onClick={() => {window.scrollTo(0, 0), toggleOpen()}} to={`/product/${randomProduct}`} style={{textDecoration: 'none', color: 'black'}}>
+                        <p className='drawer-text'>product page</p>
+                    </Link>
                 </Stack>
             </SwipeableDrawer>
             <SwipeableDrawer anchor='right' onClose={toggleCartOpen} onOpen={toggleCartOpen} open={cartOpen}>
