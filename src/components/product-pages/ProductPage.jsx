@@ -22,7 +22,7 @@ const ProductPage = () => {
         setMainImg(e.target.src)
     }
 
-    const handleCartItems = () => {
+    const handleCartItems = (e) => {
         const newItems = {
             img: item.img,
             price,
@@ -30,8 +30,13 @@ const ProductPage = () => {
             title: item.description
         }
 
-        setCartItems([...cartItems, newItems])
-
+        const checkItems = cartItems.some(el => el.title === newItems.title)
+        if(!checkItems) {
+            setCartItems([...cartItems, newItems])
+        }else {
+            console.log('already in cart')
+        }
+        console.log('2 tiems')
     }
 
 
@@ -72,7 +77,7 @@ const ProductPage = () => {
                         <h2>${price}</h2>
                     </div>
                     <div >
-                        <button onClick={handleCartItems} className='add-to-cart-btn'>ADD TO CART</button>
+                        <button onClick={e => handleCartItems(e)} className='add-to-cart-btn'>ADD TO CART</button>
                         <button className='buy-now-btn'>BUY NOW</button>
                     </div>
                 </div>

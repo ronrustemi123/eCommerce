@@ -25,6 +25,34 @@
     font-size: 19px;
 }
 
+.cart-heading {
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    height: 70px;
+    font-size: 18px;
+    font-weight: 600;
+    font-family: 'Open Sans';
+    justify-content: space-between;
+}
+
+.total-price {
+    margin: 24px 24px 0;
+    font-size: 24px;
+    font-weight: 700;
+    color: black;
+    font-family: 'Open Sans';
+    display: flex;
+    align-items: center;
+    height: 70px;
+    border-top: 3px dashed black;
+}
+
+.cart-heading i {
+    font-size: 22px;
+    cursor: pointer;
+}
+
 .nav-menu p {
     user-select: none;
     cursor: pointer;

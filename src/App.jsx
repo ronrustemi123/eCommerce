@@ -25,13 +25,13 @@ function App() {
 
   const [quantity, setQuantity] = useState(1)
   const [price, setPrice] = useState(null)
-  const [totalPrice, setTotalPrice] = useState(null)
+  const [totalPrice, setTotalPrice] = useState(0)
 
   const [cartItems, setCartItems] = useState([])
 
   return (
     <>
-      <CartContext.Provider value={{quantity, setQuantity, price, setPrice, cartItems, setCartItems}}>
+      <CartContext.Provider value={{quantity, setQuantity, price, setPrice, cartItems, setCartItems, totalPrice, setTotalPrice}}>
         <CategoryContext.Provider value={{category, setCategory}}>
           <Navigation/>
           <Routes>

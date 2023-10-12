@@ -1,5 +1,5 @@
 import './Navigation.css'
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 
 import logo from '../img/newlogo2.png'
 import { Stack, SwipeableDrawer } from '@mui/material';
@@ -13,7 +13,7 @@ import CartItem from './CartItem';
 const Navigation = () => {
 
     const {setCategory} = useContext(CategoryContext)
-    const {cartItems, setCartItems} = useContext(CartContext)
+    const {cartItems, setTotalPrice, totalPrice} = useContext(CartContext)
 
     const [open, setOpen] = useState(false)
     const [cartOpen, setCartOpen] = useState(false)
@@ -25,6 +25,11 @@ const Navigation = () => {
     const toggleOpen = () => {
         open === false ? setOpen(true) : setOpen(false)
     }
+
+    useEffect(() => {
+        const finalPrice = cartItems.reduce((acc, item) => acc + item.price, 0)
+        setTotalPrice(finalPrice)
+    }, [cartItems])
 
     const randomProduct = Math.floor(Math.random() * 20) + 1;
 
@@ -55,9 +60,13 @@ const Navigation = () => {
                 </Stack>
             </SwipeableDrawer>
             <SwipeableDrawer anchor='right' onClose={toggleCartOpen} onOpen={toggleCartOpen} open={cartOpen}>
-                <Stack px={3} mt={7} sx={{border: '1px solid red', height: '80%', overflow: 'auto'}} direction={'column'} position={'relative'} width={{lg: '35vw', sm: '50vw', xs: '100vw'}} spacing={5}>
-                    {cartItems.map(el => <CartItem title={el.title} img={el.img} quantity={el.quantity} price={el.price} />)}
+                <h1 className='cart-heading'>Your Shopping Cart ({cartItems.length}) <i onClick={toggleCartOpen} className="fa-solid fa-xmark"></i></h1>
+                <Stack px={3}  sx={{height: '70%', overflow: 'auto'}} direction={'column'} position={'relative'} width={{lg: '35vw', sm: '50vw', xs: '100vw'}} spacing={2.5}>
+                    {cartItems.length !== 0 ? cartItems.map((el) => <CartItem key={el.title} title={el.title} img={el.img} quantity={el.quantity} price={el.price} />)
+                    : <h1>nigga</h1>}
                 </Stack>
+                <h1 className='total-price'>Total Price: ${totalPrice}</h1>
+                
             </SwipeableDrawer>
         </>
 
