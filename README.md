@@ -10,4 +10,5 @@ Live website: [eCommerce](https://simple-ecommerce-pi.vercel.app/)
 [![](https://skillicons.dev/icons?i=react,materialui,css&perline=3)](https://skillicons.dev)
 
 ## Website Screenshots
-![simple-ecommerce-pi vercel app_](https://github.com/ronrustemi123/eCommerce/assets/96088084/2d5c98c4-e8af-48ca-a710-2cdeb5100bda)
+
+![simple-ecommerce-pi vercel app_](https://github.com/ronrustemi123/eCommerce/assets/96088084/661cf68b-b0b6-478d-9216-088eed71f872)
